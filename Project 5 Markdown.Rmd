@@ -3,10 +3,11 @@ title: "Project 5"
 author: "Si +"
 date: "2022-10-07"
 output: html_document
+bibliography: Project 5 Bibliography.bib
 ---
 
 # Introduction
-	Previous research has shown that activity causes a rise in body temperature. A literature review by Lim (2008) found that metabolic heat production can increase by 10- to 20-fold during physical activity, but less than 30% of that generated heat is converted to mechanical energy. The remaining 70% of generated heat should be transported to the periphery of the body and dissipated to the environment, however, dissipating mechanisms are unable to cope with the increased heat production during exercise, leading to accumulated heat in the body and an increase in body temperature. This study will explore the effects of physical activity on human body temperature.
+	Previous research has shown that activity causes a rise in body temperature. A literature review by @LimThermoregulation found that metabolic heat production can increase by 10- to 20-fold during physical activity, but less than 30% of that generated heat is converted to mechanical energy. The remaining 70% of generated heat should be transported to the periphery of the body and dissipated to the environment, however, dissipating mechanisms are unable to cope with the increased heat production during exercise, leading to accumulated heat in the body and an increase in body temperature. This study will explore the effects of physical activity on human body temperature.
 
 
 # Results
