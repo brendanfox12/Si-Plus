@@ -7,7 +7,13 @@ bibliography: Project 5 Bibliography.bib
 ---
 
 # Introduction
-	Previous research has shown that activity causes a rise in body temperature. A literature review by @LimThermoregulation found that metabolic heat production can increase by 10- to 20-fold during physical activity, but less than 30% of that generated heat is converted to mechanical energy. The remaining 70% of generated heat should be transported to the periphery of the body and dissipated to the environment, however, dissipating mechanisms are unable to cope with the increased heat production during exercise, leading to accumulated heat in the body and an increase in body temperature. This study will explore the effects of physical activity on human body temperature.
+Previous research has shown that activity does not cause a rise in body temperature due to various homeostatic regulatory processes. A literature review on human thermoregulation [@LimThermoregulation] found that, despite heat production during exercise, thermoregulation mechanisms help maintain a core body temperature. This study will further explore the effects of physical activity on human body temperature.
+
+
+# Methods
+For the "couch" data, the participant sat on a couch for 5 minutes, then the temperature sensor was placed under in their axillary region (armpit) and data was collected for 100 seconds. This was repeated for each participant.
+
+For the "active" data, the participant did jumping jacks for 5 minutes, then the temperature sensor was placed under in their axillary region (armpit) and data was collected for 100 seconds. This was repeated for each participant.
 
 
 # Results
@@ -29,11 +35,16 @@ for(i in dat.f){
 dat <- do.call(rbind,dat.l) #combine the list into table
 
 dat%>%
-  ggplot()+geom_boxplot(aes(x=activity,y=degC))+facet_grid(.~who) #plot to see what we get
+  ggplot()+geom_boxplot(aes(x=activity,y=degC))+facet_grid(.~who) + xlab("Activity") + ylab("Axillary Temperature (celsius)") #plot to see what we get
 ```
 
 
-#Author Contributions
+# Discussion
+After analyzing our data and comparing it to the literature, our data is comparable with other findings. No participant showed a significant increase in body temperature after exercise (i.e., five minutes of jumping jacks) as compared to after rest (i.e., five minutes sitting). During exercise, thermoregulation processes augment proportionally to the increased heat production in order to prevent rising temperatures in tissues [@KennyandMcGinn]. Specifically, metabolic heat production can increase by 10- to 20-fold during physical activity, but less than 30% of that generated heat is converted to mechanical energy. The remaining 70% of generated heat should be transported to the periphery of the body and dissipated to the environment via thermoregulation [@LimThermoregulation]. Some of these thermoregulatory processes include cutaneous vasodilation and sweating, which are induced by the autonomic nervous system, and evaporative heat loss [@KennyandMcGinn]. These findings are important to the overall understanding of homeostasis and thermoregulation in humans and, in a broader sense, endotherms.
+
+
+# Author Contributions
+The Si-Plus team worked together to create Project Report 5. Brendan set up the wiring of the Arduino board and temperature sensor and ran the Arduino code during the experiments. Teresa and Kayla worked on the R code, the graphs, and the write-ups. Kayla and Courtney completed background research used to frame this experiment. Teresa created the bibliography.
 
 
 # References
