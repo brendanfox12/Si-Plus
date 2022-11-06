@@ -211,27 +211,12 @@ hindPC1.BM<-brownie.lite(lep.tree2,hind.pc1*10)
 forePC2.BM<-brownie.lite(lep.tree2,fore.pc2*10)
 hindPC2.BM<-brownie.lite(lep.tree2,hind.pc2*10)
 
-forePC1.BM$sig2.single
 
 # Shifts in Evolutionary Rates
 
 library(RRphylo)
 
-hindPC1.RR <- RRphylo(tree=lep.tree2,y=hind.pc1)
 
-hindPC1.RR$rates
-
-hindPC1.SS<- search.shift(RR=hindPC1.RR,status.type="clade")
-
-hindPC1.SS$single.clades
-
-plot(lep.tree2)
-nodelabels(node = as.numeric(rownames(hindPC1.SS$single.clades)),text = rownames(hindPC1.SS$single.clades))
-
-hindPC1.plot <- plotShift(RR=hindPC1.RR,SS=hindPC1.SS)
-
-forePC1.plot <- plotShift(RR=hindPC1.RR,SS=hindPC1.SS)
-hindPC1.plot$plotClades()
 
 if (!require("BiocManager", quietly = TRUE))
   install.packages("BiocManager")
@@ -298,11 +283,33 @@ plot_SS <- function(tre=NULL,SS=NULL,tax=NULL){
 
 tax.names <- readRDS("Lep_classification.RDS")
 
+# hind PC1
+hindPC1.RR <- RRphylo(tree=lep.tree2,y=hind.pc1)
+hindPC1.SS<- search.shift(RR=hindPC1.RR,status.type="clade")
 hindPC1.res <- plot_SS(lep.tree2,hindPC1.SS,tax = tax.names)
-
 hindPC1.res$plot
-
 hindPC1.res$res
+
+#hind PC2
+hindPC2.RR <- RRphylo(tree=lep.tree2,y=hind.pc2)
+hindPC2.SS<- search.shift(RR=hindPC2.RR,status.type="clade")
+hindPC2.res <- plot_SS(lep.tree2,hindPC2.SS,tax = tax.names)
+hindPC2.res$plot
+hindPC2.res$res
+
+# fore PC1
+forePC1.RR <- RRphylo(tree=lep.tree2,y=fore.pc1)
+forePC1.SS<- search.shift(RR=forePC1.RR,status.type="clade")
+forePC1.res <- plot_SS(lep.tree2,forePC1.SS,tax = tax.names)
+forePC1.res$plot
+forePC1.res$res
+
+# fore PC2
+forePC2.RR <- RRphylo(tree=lep.tree2,y=fore.pc2)
+forePC2.SS<- search.shift(RR=forePC2.RR,status.type="clade")
+forePC2.res <- plot_SS(lep.tree2,forePC2.SS,tax = tax.names)
+forePC2.res$plot
+forePC2.res$res
 
 # Shape Evolution Correlation 
 
