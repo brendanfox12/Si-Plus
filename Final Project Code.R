@@ -327,7 +327,6 @@ PC1.pic %>%
 summary(lm(hind~fore,PC1.pic))
 
 
-
 hindPC2.pic <- pic(hind.pc2,phy = lep.tree2)
 forePC2.pic <- pic(fore.pc2,phy = lep.tree2)
 
@@ -338,6 +337,7 @@ PC2.pic <- tibble(
 PC2.pic %>% 
   ggplot(aes(x=fore,y=hind))+geom_point()+geom_smooth(method="lm")
 
+summary(lm(hind~fore,PC2.pic))
 
 
 
