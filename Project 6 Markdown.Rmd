@@ -12,7 +12,15 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Introduction
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+Lepidoptera, the order of butterflies and moths within the class Insecta, comprises an enormous number of species, roughly 160,000 extant species. The unique ability to fly gives this order of species a particularly important role in an ecosystem. To better understand this functionality, the paired wings (i.e., forewings and hindwings) of lepidoptera are an important area of research. Given the vitality of flight to these animals, it is clear that natural selection must play a role in the physical characteristics of the wings of these animals. Moreover, similar to the differential evolutionary development of hindlimbs and forelimbs in tetrapods (one study found varying development patterns of forelimb/pectoral fins versus hindlimbs/pelvic fins in tetrapods that appear to be clade-specific) it is important to investigate the functions and evolutionary rates of hind- and forewings separately [@bininda2007forelimb]. For instance, it has previously been shown that butterflies are still able to fly if their hindwings are removed, but this removal compromises speed and maneuverability of flight [@jantzen2008hindwings]. 
+
+The studies related to experimental manipulations are limited when determining the relationship between shape variables and ecological impact of fore- and hind wings over time. Studies have been conducted to determine whether fore- and hindwing shape and size differs among various butterfly species. Whilst shape of hindwings were found to be more variable than forewings within certain butterfly species [@strauss1990patterns], another experiment demonstrates strong correlation between forewing and hindwing shapes [@chazot2016morpho]. Thus to accurately prove the relationship among fore- and hindwing shapes, and their variance and significance to the butterfly lineage, this can also provide further insight into the evolution of both butterflies and moths, specifically how shape is related to motion, patterns in evolutionary rates, and similarities and differences within varying species. 
+
+The overall goal of this study is to analyze and compare the shapes as well as evolutionary rates of hind- and forewings of Lepidoptera, which will be done through a morphometric approach. The specific questions this study is aiming to answer are:
+1. Are the rates of wing-shape evolution different between the hind- and forewing? By how much?
+2. Have major lineages of the Lepidoptera undergone significant shifts in evolutionary rate?
+3. Are hind- and forewing shapes correlated?
+
 
 # Methods
 
@@ -20,6 +28,14 @@ Note that the `echo = FALSE` parameter was added to the code chunk to prevent pr
 
 # Discussion
 
+Fore and hindwings do vary in their evolutionary rates.  After analyzing both PC 1 and PC 2 for each wing, the hindwing was found to have a greater evolutionary rate.  In looking at the shape morphology, too, there were obvious differences that suspected us to hypothesize these results.  The PC1 rates for the fore and hindwing are 0.0065 and 0.0101, respectively.  The PC2 rates for the fore and hindwing are 0.0024 and 0.019, respectively.  As seen, the hindwing shows faster evolutionary rates.  As far as we know, the more genetic differences there are in a species, the faster evolution can happen, as certain traits are more likely to ‘die off’ and stronger ones become ‘established.’  In relation to Lepidopteras, the reasoning for faster hindwing may potentially be quite interesting.  The action of the forewings essentially drives butterfly flight, while the hindwings serve both as an extended airfoil during gliding flight, and to provide additional power during rapid maneuvers in flapping flight.  It might be the case that the butterfly's forewing was stable and, at this point, more likely to be conserved through time.  The hindwing on the other hand was the main point at which butterfly competition was exponentially magnified.  This has been seen in other species, too.  [@bininda2007forelimb] In this study, the forelimb develops earlier than the hindlimb.  The conservative nature of this trait means that changes serve as useful phylogenetic ‘markers’ at higher taxonomic levels in tetrapods. 
+
+The results ultimately emphasize the significance of determining the existence of a correlation between hind- and fore wing shape and specific variance in evolutionary rates. An additional study that further examines this is a study that examines the structure, properties, functions of forewing-hindwing coupling of honeybees [@ma2019structure]. This study examined the structure of the fore and hind- wings of honeybees, specifically in regards to its mechanism and differences of angle variations. This study demonstrated the strong differences that occur that allow for angle ranges, drag augment, and stroke movement that were shown to develop over time within the honeybee species.  
+
 # Author Contributions
+Teresa worked on the introduction, bibliography, and R markdwon.
+Brendan worked on the R code, results, and discussion. 
+Kayla worked on the R code and methods.
+Courtney worked on the introduction and discussion. 
 
 # References
