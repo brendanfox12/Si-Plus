@@ -1,0 +1,25 @@
+---
+title: "Project 6"
+author: "Si-Plus"
+date: "2022-11-06"
+output: html_document
+bibliography: Project 6 Bibliography.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+# Methods
+
+# Results
+
+# Discussion
+
+# Author Contributions
+
+# References
