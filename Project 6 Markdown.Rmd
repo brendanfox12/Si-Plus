@@ -389,6 +389,8 @@ PC2.pic <- tibble(
   fore=forePC2.pic
 )
 ```
+a significant correlation between PC2 hind- and fore wings
+(R-squared = 0.4442)
 
 ### PC2 regression
 
@@ -398,6 +400,8 @@ PC2.pic %>%
 
 summary(lm(hind~fore,PC2.pic))
 ```
+no significant correlation between PC2 hind- and fore wings
+(R-squared = -0.001955)
 
 
 # Discussion
