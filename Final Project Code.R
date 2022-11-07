@@ -114,7 +114,6 @@ library(ape)
 
 lep.tree <- ape::read.tree("lep_tree2.tre")
 
-plot(lep.tree,cex=0.1)
 
 lep.tree <- ladderize(lep.tree)
 plot(lep.tree,cex=0.1)
@@ -125,19 +124,9 @@ basename(names(outs))[1:5]
 
 lep.sp <- read_csv("lep_image_data.csv")
 
-head(lep.sp)
-
-head(lep.sp$identifier)
-
 out.data <- tibble(xy.file=basename(names(outs))) %>% 
   mutate(identifier=gsub("XY_|_hindwing|_forewing|.txt","",xy.file)) %>% 
   left_join(lep.sp)
-
-head(out.data)
-
-head(hindwing.pca$x,1)
-
-head(forewing.pca$x,1)
 
 hindwing.pca2 <-  tibble(xy.file=basename(rownames(hindwing.pca$x)),PC1=hindwing.pca$x[,1],PC2=hindwing.pca$x[,2]) %>% 
   left_join(out.data)
@@ -151,7 +140,6 @@ drops <- lep.tree$tip.label[!lep.tree$tip.label%in%unique(out.data$species)]
 
 lep.tree2 <- drop.tip(lep.tree,drops)
 
-plot(lep.tree2,cex=0.5)
 
 #PC1s
 hind.pc1 <- hindwing.pca2 %>% 
