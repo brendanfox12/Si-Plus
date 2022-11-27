@@ -1,0 +1,34 @@
+@article{TomalkaForceLen,
+  title={The active force–length relationship is invisible during extensive eccentric contractions in skinned skeletal muscle fibres},
+  author={Tomalka, André and Rode, Christian and Schumacher, Jens and Siebert, Tobias},
+  journal={Proceedings of the National Academy of Sciences},
+  year={2017},
+  publisher = {The Royal Society}
+}
+
+@article{EnokaMusFatigue,
+author = {Enoka, Roger M. and Duchateau, Jacques},
+title = {Muscle fatigue: what, why and how it influences muscle function},
+journal = {The Journal of Physiology},
+volume = {586},
+number = {1},
+pages = {11-23},
+doi = {https://doi.org/10.1113/jphysiol.2007.139477},
+url = {https://physoc.onlinelibrary.wiley.com/doi/abs/10.1113/jphysiol.2007.139477},
+eprint = {https://physoc.onlinelibrary.wiley.com/doi/pdf/10.1113/jphysiol.2007.139477},
+year = {2008}
+}
+
+@article{RassierLengthDep,
+author = {Rassier, D. E. and MacIntosh, B. R. and Herzog, W.},
+title = {Length dependence of active force production  in skeletal muscle},
+journal = {Journal of Applied Physiology},
+volume = {86},
+number = {5},
+pages = {1445-1457},
+year = {1999},
+}
+
+
+
+
