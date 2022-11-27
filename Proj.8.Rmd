@@ -15,15 +15,99 @@ library(knitr)
 library(MuMIn)
 ```
 # Introduction
+This project will focus on examining the force-length (FL) relationship involved in muscle contraction. The theoretical background of the FL relationship is based upon the sliding filament theory and the cross-bridge theory. According to the sliding filament theory, length change in sarcomere fibers (and, thus, in muscles) is due to the sliding of actin and myosin filaments between each other, which acts to shorten the overall muscle length. The cross-bridge theory, then, posits that this sliding is made possible by the binding of cross bridges between actin and myosin @RassierLengthDep. Together, these theories imply that the generation of force is influenced by the cross bridges made where actin and myosin overlap, and therefore that muscle length can limit the amount of force produced. Previous work suggests that the maximum force will be generated when myosin-actin filament overlap is optimal, and that produced force will decrease as this overlap is further from its optimal state @RassierLengthDep. However, @RassierLengthDep also discusses the moment arm of the muscle at the target joint as well as the excursion of the muscle as other influencing factors in the production of force in addition to the cross-bridge theory and sliding filament theory.
 
-
+This analysis will specifically focus on the isometric force produced by the human upper limb at various angles. The questions that we will aim to answer are: (1) Do class-wide force-angle data for isometric MVC accord to a typical FL relationship both under control and fatigued conditions? (2) Is there a significant shift between θmax between the control and fatigue FL relationships? By analyzing class-wide force-angle data, this will allow for comparison of the different angles at which maximum isometric force occurs in different fatigue intensities. This permits for further discussion on the underlying mechanisms that result at times of fatigue. 
 
 # Methods
+```{r, Setup, include = FALSE}
+dat.f <- list.files(path="./Project_8_data")
+dat.l <- list()
+
+#Setup- Running for loop that hits each data file and compiles the metadata
+#Pulls max forces from trial and creates mean
+for(i in dat.f){
+  metadata <- unlist(strsplit(i,'_'))
+  subj <- metadata[2]
+  ang <- metadata[3]
+  exp <- gsub('.csv','',metadata[4])
+  trial.force <- read_csv(paste0('Project_8_data/',i),col_names=FALSE)
+  trial.force$X1 <- gsub("[a-zA-Z :]","",trial.force$X1)
+  maxforce <- trial.force %>% 
+    pull(X1) %>% 
+    as.numeric() %>% 
+    mean()
+  dat.l[[i]] <- tibble(
+    subject=subj,
+    ang=as.numeric(ang),
+    exp=exp,
+    force=maxforce
+  )
+}
 
 
+dat <- do.call(rbind,dat.l)
+dat.p <- dat %>% 
+  group_by(exp,subject) %>% 
+  mutate(force=force/max(force)) %>%
+  print()
+  
+```
+
+```{r, Model Fitting with AIC Scores, include=FALSE}
+
+
+dat.p2 <- dat.p %>% 
+  na.omit()
+
+AICs <- dat.p2%>%
+  group_by(subject,exp)%>%
+  summarize(
+    m2=AICc(lm(force~poly(ang,2))), #second order
+    m3=AICc(lm(force~poly(ang,3))), #third order
+    m4=AICc(lm(force~poly(ang,4))) #fourth order
+  )%>%
+  pivot_longer(m2:m4,names_to="model",values_to="AICc")
+
+x.pred <- seq(45,157.5,length.out = 1000)
+fits <- dat.p2%>%
+  group_by(subject,exp)%>%
+  summarize(
+    m2=predict(lm(force~poly(ang,2)),newdata=data.frame(ang=x.pred)), #second order
+    m3=predict(lm(force~poly(ang,3)),newdata=data.frame(ang=x.pred)), #third order
+    m4=predict(lm(force~poly(ang,4)),newdata=data.frame(ang=x.pred)) #fourth order
+  )%>%
+  pivot_longer(m2:m4,names_to="model")%>%
+  group_by(subject,exp,model)%>%
+  summarize(theta_max=x.pred[which.max(value)])
+
+dat.p2 %>%
+  ggplot(aes(ang,force,col=exp))+geom_point()
+
+
+```
 # Results
+```{r,Comparing Models, include=FALSE}
+
+best.models <- fits%>%
+  left_join(AICs)%>%
+  group_by(subject,exp)%>%
+  mutate(best=AICc==min(AICc))%>%
+  filter(best==TRUE)%>%
+  dplyr::select(-best)%>%
+  print()
+```
+
+```{r,Results and Shift, include=TRUE}
+best.models%>%
+  pivot_wider(id_cols=subject,names_from = exp,values_from=theta_max)%>%
+  mutate(shift=fatigue-control) %>% 
+  ungroup() %>%
+  na.omit() %>% 
+  summarise(mean.shift=mean(shift),se.shift=sd(shift)/sqrt(length(shift)))
 
 
+```
 # Discussion
 
 
