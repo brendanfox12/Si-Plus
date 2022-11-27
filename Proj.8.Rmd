@@ -90,6 +90,14 @@ dat.p2 %>%
 
 ```
 # Results
+
+```{r, Visualizing datad, include=TRUE}
+
+dat.p2 %>%
+  ggplot(aes(ang,force,col=exp))+geom_point()
+```
+
+
 ```{r,Comparing Models, include=FALSE}
 
 best.models <- fits%>%
