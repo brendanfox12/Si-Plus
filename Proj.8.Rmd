@@ -126,9 +126,9 @@ There was a significant shift, on average +10.9º, in the value of the angle in 
 
 
 # Author Contribution
-Teresa Capella- 
-Courtney Cheung- 
-Brendan Fox- 
-Kayla Vidal- 
+Brendan worked on the code and the results. 
+Kayla worked on the code, results, and bibliography. 
+Teresa worked on the introduction and discussion. 
+Courtney worked on the introduction, methods, and discussion. 
 
 # References
