@@ -1,0 +1,37 @@
+---
+title: "Project8"
+author: "Teresa Capella, Courtney Cheung, Brendan Fox, Kayla Vidal"
+date: "2022-11-27"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, packages, include=FALSE}
+library(tidyverse)
+library(knitr)
+library(MuMIn)
+```
+# Introduction
+
+
+
+# Methods
+
+
+# Results
+
+
+# Discussion
+
+
+
+# Author Contribution
+Teresa Capella- 
+Courtney Cheung- 
+Brendan Fox- 
+Kayla Vidal- 
+
+# References
