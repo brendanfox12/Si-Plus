@@ -1,8 +1,9 @@
 ---
-title: "Project8"
+title: "Project 7"
 author: "Teresa Capella, Courtney Cheung, Brendan Fox, Kayla Vidal"
 date: "2022-11-27"
 output: html_document
+bibliography: Project 7 Bibliography.bib
 ---
 
 ```{r setup, include=FALSE}
@@ -15,11 +16,13 @@ library(knitr)
 library(MuMIn)
 ```
 # Introduction
-This project will focus on examining the force-length (FL) relationship involved in muscle contraction. The theoretical background of the FL relationship is based upon the sliding filament theory and the cross-bridge theory. According to the sliding filament theory, length change in sarcomere fibers (and, thus, in muscles) is due to the sliding of actin and myosin filaments between each other, which acts to shorten the overall muscle length. The cross-bridge theory, then, posits that this sliding is made possible by the binding of cross bridges between actin and myosin @RassierLengthDep. Together, these theories imply that the generation of force is influenced by the cross bridges made where actin and myosin overlap, and therefore that muscle length can limit the amount of force produced. Previous work suggests that the maximum force will be generated when myosin-actin filament overlap is optimal, and that produced force will decrease as this overlap is further from its optimal state @RassierLengthDep. However, @RassierLengthDep also discusses the moment arm of the muscle at the target joint as well as the excursion of the muscle as other influencing factors in the production of force in addition to the cross-bridge theory and sliding filament theory.
+This project will focus on examining the force-length (FL) relationship involved in muscle contraction. The theoretical background of the FL relationship is based upon the sliding filament theory and the cross-bridge theory. According to the sliding filament theory, length change in sarcomere fibers (and, thus, in muscles) is due to the sliding of actin and myosin filaments between each other, which acts to shorten the overall muscle length. The cross-bridge theory, then, posits that this sliding is made possible by the binding of cross bridges between actin and myosin [@RassierLengthDep]. Together, these theories imply that the generation of force is influenced by the cross bridges made where actin and myosin overlap, and therefore that muscle length can limit the amount of force produced. Previous work suggests that the maximum force will be generated when myosin-actin filament overlap is optimal, and that produced force will decrease as this overlap is further from its optimal state [@RassierLengthDep]. However, @RassierLengthDep also discusses the moment arm of the muscle at the target joint as well as the excursion of the muscle as other influencing factors in the production of force in addition to the cross-bridge theory and sliding filament theory.
 
 This analysis will specifically focus on the isometric force produced by the human upper limb at various angles. The questions that we will aim to answer are: (1) Do class-wide force-angle data for isometric MVC accord to a typical FL relationship both under control and fatigued conditions? (2) Is there a significant shift between θmax between the control and fatigue FL relationships? By analyzing class-wide force-angle data, this will allow for comparison of the different angles at which maximum isometric force occurs in different fatigue intensities. This permits for further discussion on the underlying mechanisms that result at times of fatigue. 
 
 # Methods
+We answered these questions by collecting various data that measured the isometric force over the range of motion of the forearm produced by maximum voluntary contractions (MVCs). Recording different MVC forces that involve a different elbow angle for thirty seconds allowed for over twelve arm angles, 45-157.5 at 11.25 intervals. To test MVCs after eccentric fatigue, we used a backpack, performing isokinetic controlled drops to fatigue flexors before repeating the previous procedure. Maximum force for each recording and across all angles of both control and fatigued experiments were recorded to determine if any shifts occurred at angle F max and at which angles created the most force. 
+
 ```{r, Setup, include = FALSE}
 dat.f <- list.files(path="./Project_8_data")
 dat.l <- list()
@@ -87,6 +90,14 @@ dat.p2 %>%
 
 ```
 # Results
+
+```{r, Visualizing datad, include=TRUE}
+
+dat.p2 %>%
+  ggplot(aes(ang,force,col=exp))+geom_point()
+```
+
+
 ```{r,Comparing Models, include=FALSE}
 
 best.models <- fits%>%

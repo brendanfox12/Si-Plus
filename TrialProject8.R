@@ -38,6 +38,10 @@ dat.p <- dat %>%
 dat.p2 <- dat.p %>% 
   na.omit()
 
+dat.p2 %>%
+  ggplot(aes(ang,force,col=exp))+geom_point()
+
+
 AICs <- dat.p2%>%
   group_by(subject,exp)%>%
   summarize(
