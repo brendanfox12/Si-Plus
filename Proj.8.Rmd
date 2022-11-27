@@ -1,8 +1,9 @@
 ---
-title: "Project8"
+title: "Project 7"
 author: "Teresa Capella, Courtney Cheung, Brendan Fox, Kayla Vidal"
 date: "2022-11-27"
 output: html_document
+bibliography: Project 7 Bibliography.bib
 ---
 
 ```{r setup, include=FALSE}
