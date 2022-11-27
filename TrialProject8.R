@@ -1,3 +1,4 @@
+#Import Libraries 
 library(tidyverse)
 library(MuMIn)
 library(ggplot2)
@@ -5,6 +6,9 @@ library(dplyr)
 
 dat.f <- list.files(path="./Project_8_data")
 dat.l <- list()
+
+#Setup- Running for loop that hits each data file and compiles the metadata
+#Pulls max forces from trial and creates mean
 for(i in dat.f){
   metadata <- unlist(strsplit(i,'_'))
   subj <- metadata[2]
@@ -12,7 +16,7 @@ for(i in dat.f){
   exp <- gsub('.csv','',metadata[4])
   trial.force <- read_csv(paste0('Project_8_data/',i),col_names=FALSE)
   trial.force$X1 <- gsub("[a-zA-Z :]","",trial.force$X1)
-  mvcf <- trial.force %>% 
+  maxforce <- trial.force %>% 
     pull(X1) %>% 
     as.numeric() %>% 
     mean()
@@ -20,12 +24,12 @@ for(i in dat.f){
     subject=subj,
     ang=as.numeric(ang),
     exp=exp,
-    force=mvcf
+    force=maxforce
   )
 }
+
+
 dat <- do.call(rbind,dat.l)
-
-
 dat.p <- dat %>% 
   group_by(exp,subject) %>% 
   mutate(force=force/max(force)) %>% 
